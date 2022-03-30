@@ -10,11 +10,13 @@ let option2 = document.getElementById("option2");
 let option3 = document.getElementById("option3");
 let option4 = document.getElementById("option4");
 
+// let optionEvents = [option1, option2, option3, option4]
+
 let quizQuestions = [
   {
-    title: "Inside which HTML section do we put the script tag the JavaScript?",
-    options: ['scripting', 'body', 'javascript', 'js'],
-    answer: 'body',
+    title: "Inside which HTML tag do we put the JavaScript file?",
+    options: ['scripting', 'script', 'javascript', 'js'],
+    answer: 'script',
   },
   {
     title: "Where is the correct place to insert a JavaScript?",
@@ -68,6 +70,15 @@ function nextQuestion() {
   }
 }
 
+function checkAnswer(answer) {
+  if (answer === quizQuestions[currentQuestion].answer) {
+    score++;
+    alert("Correct Answer +1");
+  } else {
+    alert("Wrong Answer -1");
+  }
+}
+
 function startTimer() {
   let timerInterval = setInterval(function () {
     secondsLeft--;
@@ -82,6 +93,71 @@ function startTimer() {
 
   }, 1000);
 }
+
+
+function changeQuestion(event) {
+  event.preventDefault();
+  let answer = event.target.innerHTML;
+  checkAnswer(answer);
+  nextQuestion();
+}
+
+option1.addEventListener("click", changeQuestion);
+option2.addEventListener("click", changeQuestion);
+option3.addEventListener("click", changeQuestion);
+option4.addEventListener("click", changeQuestion);
+
+
+option1.onmouseover = function (event) {
+  let target = event.target;
+  target.style.color = '#e100ff';
+  target.style.cursor = 'pointer';
+};
+
+option1.onmouseout = function (event) {
+  let target = event.target;
+  target.style.color = '#4900f2';
+};
+option2.onmouseover = function (event) {
+  let target = event.target;
+  target.style.color = '#e100ff';
+  target.style.cursor = 'pointer';
+};
+
+option2.onmouseout = function (event) {
+  let target = event.target;
+  target.style.color = '#4900f2';
+};
+option3.onmouseover = function (event) {
+  let target = event.target;
+  target.style.color = '#e100ff';
+  target.style.cursor = 'pointer';
+};
+
+option3.onmouseout = function (event) {
+  let target = event.target;
+  target.style.color = '#4900f2';
+};
+option4.onmouseover = function (event) {
+  let target = event.target;
+  target.style.color = '#e100ff';
+  target.style.cursor = 'pointer';
+};
+
+option4.onmouseout = function (event) {
+  let target = event.target;
+  target.style.color = '#4900f2';
+};
+
+// optionEvents.every.onmouseover = function (event) {
+//   let target = event.target;
+//   target.style.color = '#e100ff';
+// };
+
+// optionEvents.every.onmouseout = function (event) {
+//   let target = event.target;
+//   target.style.color = '#4900f2';
+// };
 
 
 

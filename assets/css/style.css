@@ -68,7 +68,8 @@ p {
 .quiz-question-container ol {
   text-align: left;
   line-height: 2;
-  color: #0575e6;
+  /* color: #0575e6; */
+  color: #4900f2;
   font-size: larger;
 }
 
