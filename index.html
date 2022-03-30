@@ -17,7 +17,7 @@
 </head>
 
 <body>
-  <div class="quiz-start">
+  <div id="quiz-start-container" class="quiz-start">
     <h1>JAVASCRIPT QUIZ</h1>
     <h2>Welcome to the JavaScript Quiz!</h2>
     <p>
@@ -26,28 +26,27 @@
       will
       substract 10 seconds from the timer. <br>GOOD LUCK!
     </p>
-    <button id="quiz-start-btn" class="start-btn">START!</button>
+    <button type="submit" id="quiz-start-btn" class="start-btn">START!</button>
   </div>
   </div>
   <section>
     <div id="quiz-counter" class="counter">
-      <h3>TIMER: 60</h3>
+      <h3 id="timer"></h3>
     </div>
 
     <div id="quiz-question" class="quiz-question-container">
-      <h2 id="question-number">QUESTION 1</h2>
-      <h3 id="question-text">WHAT IS?</h3>
+      <!-- <h2 id="question-number">QUESTION 1</h2> -->
+      <h3 id="question-text" class="question-content"></h3>
       <ol id="question-options">
-        <li id="option1">Option 1</li>
-        <li id="option2">Option 2</li>
-        <li id="option3">Option 3</li>
-        <li id="option4">Option 4</li>
+        <li id="option1"></li>
+        <li id="option2"></li>
+        <li id="option3"></li>
+        <li id="option4"></li>
       </ol>
-      <button id="quiz-submit-btn" class="submit-btn">SUBMIT</button>
+      <button type="submit" id="question-next" class="next-btn">NEXT</button>
     </div>
   </section>
-  <script type="text/javascript" src="./assets/js/script.js"></script>
-  </script>
+  <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
