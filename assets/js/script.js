@@ -1,14 +1,24 @@
 
 let startBtn = document.getElementById("quiz-start-btn");
 let nextBtn = document.getElementById("question-next");
+let timer = document.getElementById("quiz-timer");
 let timerContainer = document.getElementById("quiz-counter");
-let timer = document.getElementById("timer");
+let quizPoints = document.getElementById("quiz-points");
+let quizPointsContainer = document.getElementById("quiz-score");
 let questionContainer = document.getElementById("quiz-question")
 let questionText = document.getElementById("question-text");
 let option1 = document.getElementById("option1");
 let option2 = document.getElementById("option2");
 let option3 = document.getElementById("option3");
 let option4 = document.getElementById("option4");
+
+
+let scoreContainer = document.getElementById("input-score-container");
+let user = document.getElementById("user-name");
+let userScore = document.getElementById("user-score");
+let savedScore = document.getElementById("saved-score");
+let savedName = document.getElementById("saved-name");
+let saveButton = document.getElementById("save-score");
 
 // let optionEvents = [option1, option2, option3, option4]
 
@@ -29,7 +39,7 @@ let quizQuestions = [
     answer: "script src='xxx.js'",
   },
   {
-    title: '"How do you write "Hello World" in an alert box?"',
+    title: 'How do you write "Hello World" in an alert box?',
     options: ['msg("Hello World");', 'alert("Hello World");', 'alertBox("Hello World");', 'msgBox("Hello World");'],
     answer: 'alert("Hello World");',
   },
@@ -44,8 +54,6 @@ let currentQuestion = 0;
 let score = 0;
 let totalQuestions = quizQuestions.length;
 let secondsLeft = 60;
-
-
 
 
 function showQuestion() {
@@ -63,8 +71,10 @@ function nextQuestion() {
   currentQuestion++;
   if (currentQuestion === totalQuestions) {
     alert("Quiz Over!");
+    secondsLeft = 0;
     questionContainer.style.display = "none";
     timerContainer.style.display = "none";
+    quizPointsContainer.style.display = "block";
   } else {
     showQuestion();
   }
@@ -72,10 +82,13 @@ function nextQuestion() {
 
 function checkAnswer(answer) {
   if (answer === quizQuestions[currentQuestion].answer) {
-    score++;
-    alert("Correct Answer +1");
+    score += 10;
+    quizPoints.textContent = "SCORE: " + score
+    alert("Correct Answer +10");
   } else {
-    alert("Wrong Answer -1");
+    score = 0;
+    secondsLeft -= 10;
+    alert("Wrong Answer 0 points");
   }
 }
 
@@ -83,14 +96,13 @@ function startTimer() {
   let timerInterval = setInterval(function () {
     secondsLeft--;
     timer.textContent = "TIMER: " + secondsLeft;
-
     if (secondsLeft === 0) {
-      clearInterval(timerInterval);
       alert("Quiz Over!")
       questionContainer.style.display = "none";
       timerContainer.style.display = "none";
+      scoreContainer.style.display = "block";
+      clearInterval(timerInterval);
     }
-
   }, 1000);
 }
 
@@ -149,6 +161,17 @@ option4.onmouseout = function (event) {
   target.style.color = '#4900f2';
 };
 
+
+startBtn.onmouseover = function (event) {
+  let target = event.target;
+  target.style.cursor = 'pointer';
+};
+
+saveButton.onmouseover = function (event) {
+  let target = event.target;
+  target.style.cursor = 'pointer';
+};
+
 // optionEvents.every.onmouseover = function (event) {
 //   let target = event.target;
 //   target.style.color = '#e100ff';
@@ -163,9 +186,40 @@ option4.onmouseout = function (event) {
 
 startBtn.addEventListener("click", function () {
   timerContainer.style.display = "block";
+  quizPointsContainer.style.display = "block";
   questionContainer.style.display = "block";
   startTimer();
   showQuestion();
 })
 
 nextBtn.addEventListener("click", nextQuestion)
+
+
+function saveLastScore() {
+  var quizScore = {
+    user: user.value,
+    score: userScore.value,
+  };
+  localStorage.setItem("quizScore", JSON.stringify(quizScore));
+}
+
+function renderLastScore() {
+  var lastScore = JSON.parse(localStorage.getItem("quizScore"));
+  if (lastScore !== null) {
+    document.getElementById("saved-name").innerHTML = lastScore.user;
+    document.getElementById("saved-score").innerHTML = lastScore.score;
+  } else {
+    return;
+  }
+}
+
+saveButton.addEventListener("click", function (event) {
+  event.preventDefault();
+  saveLastScore();
+  renderLastScore();
+});
+
+function init() {
+  renderLastScore();
+}
+init();

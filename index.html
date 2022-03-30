@@ -30,8 +30,11 @@
   </div>
   </div>
   <section>
+    <div id="quiz-score" class="score-points">
+      <h3 id="quiz-points"></h3>
+    </div>
     <div id="quiz-counter" class="counter">
-      <h3 id="timer"></h3>
+      <h3 id="quiz-timer"></h3>
     </div>
 
     <div id="quiz-question" class="quiz-question-container">
@@ -43,8 +46,32 @@
         <li id="option3"></li>
         <li id="option4"></li>
       </ol>
-      <button type="submit" id="question-next" class="next-btn">NEXT</button>
+      <!-- <button type="submit" id="question-next" class="next-btn">NEXT</button> -->
     </div>
+    <div id="input-score-container" class="score-container">
+      <h2>ENTER YOUR SCORE</h2>
+      <form>
+        <ul>
+          <li>
+            <label for="name">NAME</label>
+            <input id="user-name" name="Name"></textarea>
+            </select>
+          </li>
+          <li>
+            <label for="score">SCORE</label>
+            <input id="user-score" name="Score"></textarea>
+          </li>
+        </ul>
+        <button id="save-score" class="save-score-btn">SAVE</button>
+      </form>
+    </div>
+
+    <div class="saved-scores">
+      <h2>LAST SAVED SCORE</h2>
+      <p>NAME: <span id="saved-name"></span></p>
+      <p>SCORE: <span id="saved-score"></span></p>
+    </div>
+
   </section>
   <script src="./assets/js/script.js"></script>
 </body>
