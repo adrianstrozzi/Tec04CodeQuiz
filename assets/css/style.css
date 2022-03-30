@@ -24,6 +24,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0;
+  padding-top: 20px;
 }
 
 .quiz-start h2,
@@ -60,7 +61,7 @@ p {
   background: linear-gradient(to right, #e100ff, #7f00ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  padding-top: 30px;
+  padding-top: 20px;
 }
 
 .quiz-question-container ol {
