@@ -7,12 +7,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/png" alt="page-tab-icon">
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+
+  <!-- Google Fonts link -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
   <title>Code Quiz</title>
 </head>
 
 <body>
+  <div class="quiz-start">
+    <h1>JAVASCRIPT QUIZ</h1>
+    <h2>Welcome to the JavaScript Quiz!</h2>
+    <p>
+      You will have 60 seconds to answer all questions. <br> Wrong
+      answers
+      will
+      substract 10 seconds from the timer. <br>GOOD LUCK!
+    </p>
+    <button id="quiz-start-btn" class="start-btn">START!</button>
+  </div>
+  </div>
+  <section>
+    <div id="quiz-counter" class="counter">
+      <h3>TIMER: 60</h3>
+    </div>
 
-  <script src="./assets/js/script.js"></script>
+    <div id="quiz-question" class="quiz-question-container">
+      <h2 id="question-number">QUESTION 1</h2>
+      <ol id="question-options">
+        <li>Option 1</li>
+        <li>Option 2</li>
+        <li>Option 3</li>
+        <li>Option 4</li>
+      </ol>
+      <button id="quiz-submit-btn" class="submit-btn">SUBMIT</button>
+    </div>
+  </section>
+  <script type="text/javascript" src="./assets/js/script.js"></script>
   </script>
 </body>
 
