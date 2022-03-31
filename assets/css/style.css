@@ -198,7 +198,7 @@ p {
   .score-container,
   .quiz-start,
   .quiz-question-container {
-    width: 80vw;
+    width: 90%;
   }
 
   .counter h3,
