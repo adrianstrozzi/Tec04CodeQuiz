@@ -47,4 +47,4 @@ You can also click on **Clear Score** to delete the current shown name and score
 
 ## <span style="color:violet">License</span>
 
-**© 2021 Adrian Strozzi**
+**© 2022 Adrian Strozzi**
