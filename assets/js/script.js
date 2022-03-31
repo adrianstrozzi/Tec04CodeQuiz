@@ -96,7 +96,7 @@ function checkAnswer(answer) {
   } else {
     score = 0;
     secondsLeft -= 10;
-    alert("Wrong Answer 0 points");
+    alert("Wrong Answer 0 points AND -10 Seconds");
   }
 }
 
