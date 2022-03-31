@@ -6,7 +6,7 @@
 
 ## <span style="color:violet">How to use</span>
 
-Use this **link** to access the Code Quiz: [Adrian Strozzi - Code Quiz](https://adrianstrozzi.github.io/Tec03PasswordGenerator/)
+Use this **link** to access the Code Quiz: [Adrian Strozzi - Code Quiz](https://adrianstrozzi.github.io/Tec04CodeQuiz/)
 
 ## <span style="color:violet">Usage</span>
 
