@@ -34,6 +34,10 @@ p {
   padding: 10px 0;
 }
 
+.quiz-start h3 {
+  color: #e100ff;
+}
+
 .start-btn {
   border-radius: 20px;
   margin: 20px;
@@ -156,7 +160,6 @@ p {
   width: 500px;
   border-radius: 30px;
   line-height: 2;
-  padding-bottom: 20px;
 }
 
 .saved-scores h2 {
@@ -170,4 +173,37 @@ p {
   font-weight: bold;
   font-size: large;
   color: #ff00aa;
+}
+
+.clear-score-btn {
+  border-radius: 20px;
+  margin: 20px;
+  width: 120px;
+  height: 40px;
+  background-color: #0400ff;
+  color: white;
+  border: none;
+}
+
+.clear-score-btn:hover {
+  background-color: #e100ff;
+}
+
+@media only screen and (max-width: 800px) {
+  body {
+    font-size: 0.8rem;
+  }
+
+  .saved-scores,
+  .score-container,
+  .quiz-start,
+  .quiz-question-container {
+    width: 80vw;
+  }
+
+  .counter h3,
+  .score-points h3 {
+    margin: auto;
+    padding: 10px;
+  }
 }

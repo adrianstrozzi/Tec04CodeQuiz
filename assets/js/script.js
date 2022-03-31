@@ -1,6 +1,5 @@
-
+// Variable to manipulate quiz elements
 let startBtn = document.getElementById("quiz-start-btn");
-let nextBtn = document.getElementById("question-next");
 let timer = document.getElementById("quiz-timer");
 let timerContainer = document.getElementById("quiz-counter");
 let quizPoints = document.getElementById("quiz-points");
@@ -13,15 +12,17 @@ let option3 = document.getElementById("option3");
 let option4 = document.getElementById("option4");
 
 
-let scoreContainer = document.getElementById("input-score-container");
+// Variables to Input and Store user Name and Score
+
+let inputScoreContainer = document.getElementById("input-score-container");
 let user = document.getElementById("user-name");
 let userScore = document.getElementById("user-score");
 let savedScore = document.getElementById("saved-score");
 let savedName = document.getElementById("saved-name");
 let saveButton = document.getElementById("save-score");
+let clearButton = document.getElementById("clear-score");
 
-// let optionEvents = [option1, option2, option3, option4]
-
+// Array to store our questions, options and answers
 let quizQuestions = [
   {
     title: "Inside which HTML tag do we put the JavaScript file?",
@@ -50,12 +51,16 @@ let quizQuestions = [
   },
 ];
 
+// Variables for our timer and score
+
 let currentQuestion = 0;
 let score = 0;
 let totalQuestions = quizQuestions.length;
 let secondsLeft = 60;
 
 
+
+// This function show our question content when initiated
 function showQuestion() {
   let question = quizQuestions[currentQuestion];
   questionText.innerHTML = question.title;
@@ -66,19 +71,22 @@ function showQuestion() {
 }
 
 
-
+// This function ends timer when all questions have been answered and hides/show page elements
 function nextQuestion() {
   currentQuestion++;
   if (currentQuestion === totalQuestions) {
-    alert("Quiz Over!");
     secondsLeft = 0;
+    alert("Quiz Over!");
     questionContainer.style.display = "none";
     timerContainer.style.display = "none";
     quizPointsContainer.style.display = "block";
+    inputScoreContainer.style.display = "block";
   } else {
     showQuestion();
   }
 }
+
+// This functions checks for the correct answer and adds points or subtracts seconds for the timer if that might be the case.
 
 function checkAnswer(answer) {
   if (answer === quizQuestions[currentQuestion].answer) {
@@ -92,6 +100,8 @@ function checkAnswer(answer) {
   }
 }
 
+// This functions starts our timer and hide/shows page elments
+
 function startTimer() {
   let timerInterval = setInterval(function () {
     secondsLeft--;
@@ -100,12 +110,13 @@ function startTimer() {
       alert("Quiz Over!")
       questionContainer.style.display = "none";
       timerContainer.style.display = "none";
-      scoreContainer.style.display = "block";
+      inputScoreContainer.style.display = "block";
       clearInterval(timerInterval);
     }
   }, 1000);
 }
 
+// This function allows to change question when an option is selected.
 
 function changeQuestion(event) {
   event.preventDefault();
@@ -114,11 +125,15 @@ function changeQuestion(event) {
   nextQuestion();
 }
 
+// Event listeners to execute a bove functions when clicking
+
 option1.addEventListener("click", changeQuestion);
 option2.addEventListener("click", changeQuestion);
 option3.addEventListener("click", changeQuestion);
 option4.addEventListener("click", changeQuestion);
 
+
+// Event to change cursor icon when hovering over question options
 
 option1.onmouseover = function (event) {
   let target = event.target;
@@ -161,7 +176,6 @@ option4.onmouseout = function (event) {
   target.style.color = '#4900f2';
 };
 
-
 startBtn.onmouseover = function (event) {
   let target = event.target;
   target.style.cursor = 'pointer';
@@ -172,27 +186,7 @@ saveButton.onmouseover = function (event) {
   target.style.cursor = 'pointer';
 };
 
-// optionEvents.every.onmouseover = function (event) {
-//   let target = event.target;
-//   target.style.color = '#e100ff';
-// };
-
-// optionEvents.every.onmouseout = function (event) {
-//   let target = event.target;
-//   target.style.color = '#4900f2';
-// };
-
-
-
-startBtn.addEventListener("click", function () {
-  timerContainer.style.display = "block";
-  quizPointsContainer.style.display = "block";
-  questionContainer.style.display = "block";
-  startTimer();
-  showQuestion();
-})
-
-nextBtn.addEventListener("click", nextQuestion)
+// This function saves the Score input by the user
 
 
 function saveLastScore() {
@@ -202,6 +196,8 @@ function saveLastScore() {
   };
   localStorage.setItem("quizScore", JSON.stringify(quizScore));
 }
+
+// This function will render the input name and score in the Last Score container
 
 function renderLastScore() {
   var lastScore = JSON.parse(localStorage.getItem("quizScore"));
@@ -213,13 +209,35 @@ function renderLastScore() {
   }
 }
 
+// This will execute the Save and Render functions above
+
 saveButton.addEventListener("click", function (event) {
   event.preventDefault();
   saveLastScore();
   renderLastScore();
 });
 
+// This functions clears the Last Score input and Local Storage
+
+clearButton.addEventListener("click", function () {
+  savedName.textContent = ""
+  savedScore.textContent = ""
+  localStorage.clear();
+})
+
+// This will render the saved score in Local Storage when the page is open
+
 function init() {
   renderLastScore();
 }
 init();
+
+// This button starts the Quiz and show some HTML elements
+
+startBtn.addEventListener("click", function () {
+  timerContainer.style.display = "block";
+  quizPointsContainer.style.display = "block";
+  questionContainer.style.display = "block";
+  startTimer();
+  showQuestion();
+})

@@ -21,10 +21,11 @@
     <h1>JAVASCRIPT QUIZ</h1>
     <h2>Welcome to the JavaScript Quiz!</h2>
     <p>
-      You will have 60 seconds to answer all questions. <br> Wrong
+      You will have <b>60 SECONDS</b> to answer all questions. <br> Wrong
       answers
       will
-      substract 10 seconds from the timer. <br>GOOD LUCK!
+      substract <b>10 SECONDS</b> from the timer.
+    <h3>GOOD LUCK!</h3>
     </p>
     <button type="submit" id="quiz-start-btn" class="start-btn">START!</button>
   </div>
@@ -38,7 +39,6 @@
     </div>
 
     <div id="quiz-question" class="quiz-question-container">
-      <!-- <h2 id="question-number">QUESTION 1</h2> -->
       <h3 id="question-text" class="question-content"></h3>
       <ol id="question-options">
         <li id="option1"></li>
@@ -46,7 +46,6 @@
         <li id="option3"></li>
         <li id="option4"></li>
       </ol>
-      <!-- <button type="submit" id="question-next" class="next-btn">NEXT</button> -->
     </div>
     <div id="input-score-container" class="score-container">
       <h2>ENTER YOUR SCORE</h2>
@@ -70,6 +69,7 @@
       <h2>LAST SAVED SCORE</h2>
       <p>NAME: <span id="saved-name"></span></p>
       <p>SCORE: <span id="saved-score"></span></p>
+      <button id="clear-score" class="clear-score-btn">CLEAR SCORE</button>
     </div>
 
   </section>
